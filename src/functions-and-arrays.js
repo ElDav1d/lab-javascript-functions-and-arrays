@@ -111,7 +111,7 @@ function uniquifyArray(wordsArray) {
   const uniqueArray = [];
 
   for (const word of wordsArray) {
-    if(uniqueArray.includes(word) === false) {
+    if (uniqueArray.includes(word) === false) {
       uniqueArray.push(word);
     }
   }
@@ -151,7 +151,14 @@ const wordsCount = [
   "matter",
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, target) {
+  let count = 0;
+  for (const word of wordsArray) {
+    if (word === target) count++;
+  }
+
+  return count;
+}
 
 // Iteration #8: Bonus
 const matrix = [
