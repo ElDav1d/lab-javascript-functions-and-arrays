@@ -101,7 +101,13 @@ function averageWordLength(words) {
 }
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(array) {
+  if (array.length === 0) return null;
+  
+  const average = sum(array) / array.length;
+  
+  return average;
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
