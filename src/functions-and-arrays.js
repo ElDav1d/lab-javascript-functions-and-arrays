@@ -45,7 +45,19 @@ function sumNumbers(numbersArray) {
 }
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(array) {
+  let sum = 0;
+  for (const item of array) {
+    if (typeof item === "object") {
+      throw new Error("Unsupported data type sir or ma'am")
+    } else if (typeof item === "string") {
+      sum += item.length;
+    } else {
+      sum += item;
+    }
+  }
+  return sum;
+}
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
@@ -153,6 +165,7 @@ const wordsCount = [
 
 function howManyTimes(wordsArray, target) {
   let count = 0;
+
   for (const word of wordsArray) {
     if (word === target) count++;
   }
