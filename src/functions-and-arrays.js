@@ -34,13 +34,13 @@ const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 function sumNumbers(numbersArray) {
   if (numbersArray.length === 0) return 0;
   if (numbersArray.length === 1) return numbersArray[0];
-  
+
   let result = 0;
-  
+
   for (const number of numbersArray) {
     result += number;
   }
-  
+
   return result;
 }
 
@@ -53,9 +53,9 @@ const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 function averageNumbers(numbersArray) {
   if (numbersArray.length === 0) return null;
-  
+
   const average = sumNumbers(numbersArray) / numbersArray.length;
-  
+
   return average;
 }
 
@@ -106,7 +106,18 @@ const wordsUnique = [
   "bring",
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArray) {
+  if (wordsArray.length === 0) return null;
+  const uniqueArray = [];
+
+  for (const word of wordsArray) {
+    if(uniqueArray.includes(word) === false) {
+      uniqueArray.push(word);
+    }
+  }
+
+  return uniqueArray;
+}
 
 // Iteration #6: Find elements
 const wordsFind = [
