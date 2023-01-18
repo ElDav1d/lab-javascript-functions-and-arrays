@@ -328,4 +328,15 @@ describe('Bonus Quest - greatestProduct', () => {
     ];
     expect(greatestProduct(matrix)).toBe(16);
   });
+
+  it("should return 3200 with the provided example", () => {
+    let matrix = [
+    [ 1,  2, 3, 4, 5],
+    [ 1, 20, 3, 4, 5],
+    [ 1, 20, 3, 4, 5],
+    [ 1, 20, 3, 4, 5],
+    [ 1,  4, 3, 4, 5]
+  ];
+    expect(greatestProduct(matrix)).toBe(3200);
+  });
 });

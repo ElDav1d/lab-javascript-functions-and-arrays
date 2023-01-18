@@ -245,7 +245,31 @@ const matrix = [
   ],
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let finalProduct =  0
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      const current = matrix[i][j];
+      const adjacentX1  = matrix[i][j + 1];
+      const adjacentX2  = matrix[i][j + 2];
+      const adjacentX3  = matrix[i][j + 3];
+      const adjacentY1  = matrix[i + 1][j];
+      const adjacentY2  = matrix[i + 2][j];
+      const adjacentY3  = matrix[i + 3][j];
+
+
+      const adjacentXProduct = current * adjacentX1 * adjacentX2 * adjacentX3;
+      const adjacentYProduct = current * adjacentY1 * adjacentY2 * adjacentY3;
+      
+      if (adjacentXProduct > finalProduct) {finalProduct = adjacentXProduct;}
+      else if (adjacentYProduct > finalProduct) {finalProduct = adjacentYProduct;}
+      
+    } 
+  }
+
+  return finalProduct
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
