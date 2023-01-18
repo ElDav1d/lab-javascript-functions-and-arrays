@@ -34,7 +34,7 @@ const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 function sumNumbers(numbersArray) {
   if (numbersArray.length === 0) return 0;
   if (numbersArray.length === 1) return numbersArray[0];
-
+  
   let result = 0;
   
   for (const number of numbersArray) {
@@ -51,7 +51,13 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(numbersArray) {
+  if (numbersArray.length === 0) return null;
+
+  const average = sumNumbers(numbersArray) / numbersArray.length;
+  
+  return average;
+}
 
 // Level 2: Array of words
 const wordsArr = [
