@@ -53,7 +53,7 @@ const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 function averageNumbers(numbersArray) {
   if (numbersArray.length === 0) return null;
-
+  
   const average = sumNumbers(numbersArray) / numbersArray.length;
   
   return average;
@@ -73,7 +73,20 @@ const wordsArr = [
   "palace",
 ];
 
-function averageWordLength() {}
+function averageWordLength(words) {
+  if (words.length === 0) return null;
+  if (words.length === 1) return words[0].length;
+
+  let count = 0;
+
+  for (const word of words) {
+    count += word.length;
+  }
+
+  const average = count / words.length;
+
+  return average;
+}
 
 // Bonus - Iteration #4.1
 function avg() {}
