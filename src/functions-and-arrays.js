@@ -19,7 +19,8 @@ function findLongestWord(wordsArray) {
   if (wordsArray.length === 0) return null;
   if (wordsArray.length === 1) return wordsArray[0];
 
-  let longestWord = wordsArray[0];
+  // let longestWord = wordsArray[0]; no need for init with any word;
+  let longestWord = "";
 
   for (const word of wordsArray) {
     if (word.length > longestWord.length) longestWord = word;
@@ -49,7 +50,7 @@ function sum(array) {
   let sum = 0;
   for (const item of array) {
     if (typeof item === "object") {
-      throw new Error("Unsupported data type sir or ma'am")
+      throw new Error("Unsupported data type sir or ma'am");
     } else if (typeof item === "string") {
       sum += item.length;
     } else {
@@ -67,7 +68,6 @@ function averageNumbers(numbersArray) {
   if (numbersArray.length === 0) return null;
 
   const average = sumNumbers(numbersArray) / numbersArray.length;
-
   return average;
 }
 
@@ -103,9 +103,9 @@ function averageWordLength(words) {
 // Bonus - Iteration #4.1
 function avg(array) {
   if (array.length === 0) return null;
-  
+
   const average = sum(array) / array.length;
-  
+
   return average;
 }
 
@@ -129,9 +129,12 @@ function uniquifyArray(wordsArray) {
   const uniqueArray = [];
 
   for (const word of wordsArray) {
-    if (uniqueArray.includes(word) === false) {
-      uniqueArray.push(word);
-    }
+    // if (uniqueArray.includes(word) === false) {
+    //   uniqueArray.push(word);
+    // } although this is fine: check "reversed" version, more consies
+
+    if (uniqueArray.includes(word)) continue;
+    uniqueArray.push(word);
   }
 
   return uniqueArray;
@@ -246,29 +249,37 @@ const matrix = [
 ];
 
 function greatestProduct(matrix) {
-  let finalProduct =  0
+  let finalProduct = 0;
 
+  console.log("init: ", finalProduct);
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
       const current = matrix[i][j];
-      const adjacentX1  = matrix[i][j + 1];
-      const adjacentX2  = matrix[i][j + 2];
-      const adjacentX3  = matrix[i][j + 3];
-      const adjacentY1  = matrix[i + 1][j];
-      const adjacentY2  = matrix[i + 2][j];
-      const adjacentY3  = matrix[i + 3][j];
-
+      const adjacentX1 = matrix[i][j + 1];
+      const adjacentX2 = matrix[i][j + 2];
+      const adjacentX3 = matrix[i][j + 3];
+      const adjacentY1 = matrix[i + 1][j];
+      const adjacentY2 = matrix[i + 2][j];
+      const adjacentY3 = matrix[i + 3][j];
 
       const adjacentXProduct = current * adjacentX1 * adjacentX2 * adjacentX3;
       const adjacentYProduct = current * adjacentY1 * adjacentY2 * adjacentY3;
-      
-      if (adjacentXProduct > finalProduct) {finalProduct = adjacentXProduct;}
-      else if (adjacentYProduct > finalProduct) {finalProduct = adjacentYProduct;}
-      
-    } 
+
+      // console.log(adjacentXProduct);
+      // console.log(adjacentYProduct);
+
+      if (adjacentXProduct > finalProduct) {
+        finalProduct = adjacentXProduct;
+      } else if (adjacentYProduct > finalProduct) {
+        finalProduct = adjacentYProduct;
+      } else {
+        console.log("out of conditional!! ", finalProduct);
+      }
+    }
   }
 
-  return finalProduct
+  console.log("return : ", finalProduct);
+  return finalProduct;
 }
 
 // The following is required to make unit tests work.
