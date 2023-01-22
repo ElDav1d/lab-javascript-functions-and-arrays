@@ -258,16 +258,46 @@ function greatestProduct(matrix) {
       const adjacentX2 = matrix[i][j + 2];
       const adjacentX3 = matrix[i][j + 3];
       const adjacentY1 = matrix[i + 1] ? matrix[i + 1][j] : 1;
-      const adjacentY2 = matrix[i + 2] ? matrix[i + 2][j] : 1;
-      const adjacentY3 = matrix[i + 3] ? matrix[i + 3][j] : 1;
+      const adjacentY2 = matrix[i + 2] ? matrix[i + 2][j] : 1;
+      const adjacentY3 = matrix[i + 3] ? matrix[i + 3][j] : 1;
 
       const adjacentXProduct = current * adjacentX1 * adjacentX2 * adjacentX3;
       const adjacentYProduct = current * adjacentY1 * adjacentY2 * adjacentY3;
 
-      if (adjacentXProduct && adjacentXProduct > finalProduct) {
+      if (adjacentXProduct > finalProduct) {
         finalProduct = adjacentXProduct;
-      } else if (adjacentYProduct && adjacentYProduct > finalProduct) {
+      } else if (adjacentYProduct > finalProduct) {
         finalProduct = adjacentYProduct;
+      }
+    }
+  }
+
+  return finalProduct;
+}
+
+// Iteration #8.2: Bonus
+
+function greatestProductDiagonal(matrix) {
+  let finalProduct = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      const current = matrix[i][j];
+      const diagonalForth1 = matrix[i + 1] ? matrix[i + 1][j + 1] : 1;
+      const diagonalForth2 = matrix[i + 2] ? matrix[i + 2][j + 2] : 1;
+      const diagonalForth3 = matrix[i + 3] ? matrix[i + 3][j + 3] : 1;
+      const diagonalBack1 = matrix[i + 1] ? matrix[i + 1][j - 1] : 1;
+      const diagonalBack2 = matrix[i + 2] ? matrix[i + 2][j - 2] : 1;
+      const diagonalBack3 = matrix[i + 3] ? matrix[i + 3][j - 3] : 1;
+
+      const diagonalForthAll =
+        current * diagonalForth1 * diagonalForth2 * diagonalForth3;
+      const diagonalBackAll =
+        current * diagonalBack1 * diagonalBack2 * diagonalBack3;
+
+      if (diagonalForthAll > finalProduct) {
+        finalProduct = diagonalForthAll;
+      } else if (diagonalBackAll > finalProduct) {
+        finalProduct = diagonalBackAll;
       }
     }
   }
@@ -290,5 +320,6 @@ if (typeof module !== "undefined") {
     doesWordExist,
     howManyTimes,
     greatestProduct,
+    greatestProductDiagonal,
   };
 }
