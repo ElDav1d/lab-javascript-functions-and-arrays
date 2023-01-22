@@ -251,34 +251,27 @@ const matrix = [
 function greatestProduct(matrix) {
   let finalProduct = 0;
 
-  console.log("init: ", finalProduct);
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
       const current = matrix[i][j];
       const adjacentX1 = matrix[i][j + 1];
       const adjacentX2 = matrix[i][j + 2];
       const adjacentX3 = matrix[i][j + 3];
-      const adjacentY1 = matrix[i + 1][j];
-      const adjacentY2 = matrix[i + 2][j];
-      const adjacentY3 = matrix[i + 3][j];
+      const adjacentY1 = matrix[i + 1] ? matrix[i + 1][j] : 1;
+      const adjacentY2 = matrix[i + 2] ? matrix[i + 2][j] : 1;
+      const adjacentY3 = matrix[i + 3] ? matrix[i + 3][j] : 1;
 
       const adjacentXProduct = current * adjacentX1 * adjacentX2 * adjacentX3;
       const adjacentYProduct = current * adjacentY1 * adjacentY2 * adjacentY3;
 
-      // console.log(adjacentXProduct);
-      // console.log(adjacentYProduct);
-
-      if (adjacentXProduct > finalProduct) {
+      if (adjacentXProduct && adjacentXProduct > finalProduct) {
         finalProduct = adjacentXProduct;
-      } else if (adjacentYProduct > finalProduct) {
+      } else if (adjacentYProduct && adjacentYProduct > finalProduct) {
         finalProduct = adjacentYProduct;
-      } else {
-        console.log("out of conditional!! ", finalProduct);
       }
     }
   }
 
-  console.log("return : ", finalProduct);
   return finalProduct;
 }
 
